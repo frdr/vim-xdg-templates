@@ -24,7 +24,7 @@ The lookup directory can be overridden by setting
 
 ## Known bugs:
 
-* Python files are shown as modified
+* Python files are shown as modified because of `fileencoding=utf-8` in modeline.
 
 ## License
 
