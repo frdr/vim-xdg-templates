@@ -26,4 +26,6 @@ The lookup directory can be overridden by setting
 
 * Python files are shown as modified
 
-Licensed under the same terms as Vim.
+## License
+
+Licensed under the same terms as Vim itself.
