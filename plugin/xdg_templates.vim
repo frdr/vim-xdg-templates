@@ -36,5 +36,5 @@ let g:loaded_xdg_templates=1
 
 augroup xdg_templates
     autocmd!
-    autocmd BufNewFile * execute '0read'.g:xdg_templates#find_template(expand('<afile>')) | $ | setlocal nomodified
+    autocmd BufNewFile * eval g:xdg_templates#read_template(expand('<afile>'))
 augroup END

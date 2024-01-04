@@ -21,4 +21,14 @@ function xdg_templates#find_template(filename)
             return s:template
         endif
     endfor 
+    return ''
+endfunction
+
+function xdg_templates#read_template(filename)
+    let s:template = g:xdg_templates#find_template(a:filename)
+    if ! empty(s:template)
+        execute '0read' s:template
+        $
+        setlocal nomodified
+    endif
 endfunction
