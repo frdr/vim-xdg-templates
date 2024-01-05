@@ -24,7 +24,7 @@ function xdg_templates#find_template(filename)
     return ''
 endfunction
 
-function xdg_templates#read_template(filename)
+function xdg_templates#prefix_template(filename)
     let s:template = g:xdg_templates#find_template(a:filename)
     if ! empty(s:template)
         execute '0read' s:template

@@ -17,7 +17,6 @@ The lookup directory can be overridden by setting
 
 ## Missing features:
 
-* Add a function that allows to add templates to existing files.
 * Consider filetypes, not just extensions.
 * Don't always jump to the bottom of the template, to allow e.g. for
   modelines at the bottom of the templates.

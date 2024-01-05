@@ -34,7 +34,13 @@ if exists('g:loaded_xdg_templates')
 endif
 let g:loaded_xdg_templates=1
 
-augroup xdg_templates
-    autocmd!
-    autocmd BufNewFile * eval g:xdg_templates#read_template(expand('<afile>'))
-augroup END
+if ! exists('g:xdg_templates_no_autocmd')
+    augroup xdg_templates
+        autocmd!
+        autocmd BufNewFile * eval g:xdg_templates#prefix_template(expand('<afile>'))
+    augroup END
+endif
+
+if ! exists('g:xdg_templates_no_command')
+    command PrefixXdgTemplate eval g:xdg_templates#prefix_template(expand('%'))
+endif
