@@ -1,0 +1,42 @@
+*xdg_templates.txt*	Use files from XDG's Templates directory in Vim
+
+Any file within the $HOME/Templates directory is offered for quick file
+creation in graphical file managers. This plugin makes Vim use the same
+files whenever a new file with a matching extension is created.
+
+Note that this works purely on extension, not 'filetype'. Consider
+creating synonymous files through symlinks:
+
+	ln -s header_file.h header_file.hpp
+
+OPTIONS
+						  *g:xdg_templates_lookup_dir*
+The lookup directory can be overridden by setting
+`g:xdg_templates_lookup_dir`. The variable's value is taken verbatim, if you
+want expansion to take place, you need to do it yourself: >
+    let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
+<
+
+						  *g:xdg_templates_no_autocmd*
+To prevent xdg_templates from creating |autocmd|s, set the variable `g:xdg_templates_no_autocmd`.
+
+						  *g:xdg_templates_no_command*
+To prevent xdg_templates from creating |command|s, set the variable `g:xdg_templates_no_command`.
+
+MISSING FEATURES
+
+* Add a function that allows to add templates to existing files.
+* Consider using 'filetype', not just extensions.
+* Don't always jump to the bottom of the template, to allow e.g. for a
+  'modeline' at the bottom of the templates.
+
+KNOWN BUGS
+
+* Python files are shown as modified
+
+LICENSE
+
+Licensed under the same terms as Vim.
+
+
+ vim:tw=78:ts=8:noet:ft=help:norl:
