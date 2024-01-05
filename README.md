@@ -18,6 +18,7 @@ The lookup directory can be overridden by setting
 ## Missing features:
 
 * Consider filetypes, not just extensions.
+* Allow for extension aliases (e.g. C++ has cpp, C, cc, cxx, etc.)
 * Don't always jump to the bottom of the template, to allow e.g. for
   modelines at the bottom of the templates.
 
