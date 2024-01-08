@@ -3,31 +3,36 @@
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
 
-function xdg_templates#find_template(filename)
-    " Let user override the dir we search templates in
-    " Useful for non-XDG operating systems
-    if ! exists('g:xdg_templates_lookup_dir')
-        if executable('xdg-user-dir')
-            " Use whatever XDG uses
-            silent let g:xdg_templates_lookup_dir = trim(system('xdg-user-dir TEMPLATES'))
-        else
-            " Just take what's the default
-            silent let g:xdg_templates_lookup_dir = expand('~/Templates')
-        endif
+function xdg_templates#get_templates_dir()
+    " Let user override the dir we search templates in.
+    " Useful for non-XDG operating systems.
+    if exists('g:xdg_templates_lookup_dir') && ! empty('g:xdg_templates_lookup_dir')
+        return g:xdg_templates_lookup_dir
     endif
 
-    for s:template in glob(g:xdg_templates_lookup_dir .. '/*.*', 0, 1)
-        if fnamemodify(s:template, ':e') == fnamemodify(a:filename, ':e')
-            return s:template
+    " Use whatever XDG uses
+    if executable('xdg-user-dir')
+        return trim(system('xdg-user-dir TEMPLATES'))
+    endif
+
+    " Just take what's the default
+    return expand('~/Templates')
+endfunction
+
+function xdg_templates#find_template(filename)
+    silent let l:template_dir = g:xdg_templates#get_templates_dir()
+    for l:template in glob(l:template_dir .. '/*.*', 0, 1)
+        if fnamemodify(l:template, ':e') == fnamemodify(a:filename, ':e')
+            return l:template
         endif
     endfor 
     return ''
 endfunction
 
 function xdg_templates#prefix_template(filename)
-    silent let s:template = g:xdg_templates#find_template(a:filename)
-    if ! empty(s:template)
-        execute '0read' s:template
+    silent let l:template = g:xdg_templates#find_template(a:filename)
+    if ! empty(l:template)
+        execute '0read' l:template
         $
         setlocal nomodified
     endif
