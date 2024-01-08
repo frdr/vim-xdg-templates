@@ -48,7 +48,7 @@ COMMANDS
 						     *:PrefixXdgTemplate*
 PrefixXdgTemplate			Find a template for the current file
 					and insert it at the top of the
-buffer.
+					buffer.
 
 OPTIONS
 
