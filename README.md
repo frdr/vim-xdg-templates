@@ -1,5 +1,6 @@
 # vim-xdg-templates
-Use XDG templates for new files in Vim
+
+**Use files from XDG TEMPLATES for new buffers in Vim**
 
 Any file within the `~/Templates` directory is offered for quick file
 creation in graphical file managers. This plugin makes Vim use the same
