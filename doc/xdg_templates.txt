@@ -66,8 +66,6 @@ To prevent xdg_templates from creating any |autocmd|, set the variable `g:xdg_te
 To prevent xdg_templates from creating any |command|, set the variable
 `g:xdg_templates_no_command`.
 
-==============================================================================
-
 MISSING FEATURES
 
 * Alias for extensions.
@@ -79,12 +77,8 @@ KNOWN BUGS
 
 * Python files are shown as modified
 
-==============================================================================
-
 LICENSE
 
 Licensed under the same terms as Vim itself.
-
-==============================================================================
 
  vim:tw=78:ts=8:noet:ft=help:norl:
