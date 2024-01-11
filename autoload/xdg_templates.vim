@@ -32,8 +32,11 @@ endfunction
 function xdg_templates#prefix_template(filename)
     silent let l:template = g:xdg_templates#find_template(a:filename)
     if ! empty(l:template)
+        let l:was_modified = &modified
         execute '0read' l:template
         $
-        setlocal nomodified
+        if ! l:was_modified
+            setlocal nomodified
+        endif
     endif
 endfunction
