@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:	2024-01-04
+" Last Change:	2024-01-11
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
 

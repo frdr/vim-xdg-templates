@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:	2024-01-04
+" Last Change:	2024-01-11
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 "
 " Any file within the ~/Templates directory is offered for quick file
@@ -15,19 +15,6 @@
 " `g:xdg_templates_lookup_dir`:
 "
 "     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
-"
-" Missing features:
-"
-" * Add a function that allows to add templates to existing files.
-" * Consider filetypes, not just extensions.
-" * Don't always jump to the bottom of the template, to allow e.g. for
-"   modelines at the bottom of the templates.
-"
-" Known bugs:
-"
-" * Python files are shown as modified
-"
-" Licensed under the same terms as Vim.
 
 if exists('g:loaded_xdg_templates')
     finish
