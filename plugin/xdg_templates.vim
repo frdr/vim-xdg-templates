@@ -16,7 +16,7 @@
 "
 "     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
 "
-"Offsets for can be defined per template to allow e.g. for modelines:
+" Offsets for can be defined per template to allow e.g. for modelines:
 "
 "     let g:xdg_templates_file_offset['myheader.h'] = '$-2'
 

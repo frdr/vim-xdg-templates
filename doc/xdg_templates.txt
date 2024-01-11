@@ -66,7 +66,8 @@ It is intended for cursor motion but any Ex command can be supplied so don't
 do anything stupid!
 
 						  *g:xdg_templates_no_autocmd*
-To prevent xdg_templates from creating any |autocmd|, set the variable `g:xdg_templates_no_autocmd`.
+To prevent xdg_templates from creating any |autocmd|, set the variable
+`g:xdg_templates_no_autocmd`.
 
 						  *g:xdg_templates_no_command*
 To prevent xdg_templates from creating any |command|, set the variable
