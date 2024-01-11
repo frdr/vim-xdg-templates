@@ -15,11 +15,17 @@
 " `g:xdg_templates_lookup_dir`:
 "
 "     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
+"
+"Offsets for can be defined per template to allow e.g. for modelines:
+"
+"     let g:xdg_templates_file_offset['myheader.h'] = '$-2'
 
 if exists('g:loaded_xdg_templates')
     finish
 endif
 let g:loaded_xdg_templates=1
+
+let g:xdg_templates_file_offset = {}
 
 if ! (exists('g:xdg_templates_no_autocmd') && g:xdg_templates_no_autocmd)
     augroup xdg_templates

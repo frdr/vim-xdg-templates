@@ -16,14 +16,16 @@ The lookup directory can be overridden by setting
 
     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
 
-## Missing features:
+Offsets for can be defined per template to allow e.g. for modelines:
+
+    let g:xdg_templates_file_offset['myheader.h'] = '$-2'
+
+## Missing features
 
 * Consider filetypes, not just extensions.
 * Allow for extension aliases (e.g. C++ has cpp, C, cc, cxx, etc.)
-* Don't always jump to the bottom of the template, to allow e.g. for
-  modelines at the bottom of the templates.
 
-## Known bugs:
+## Known bugs
 
 * Python files are shown as modified because of `fileencoding=utf-8` in modeline.
 

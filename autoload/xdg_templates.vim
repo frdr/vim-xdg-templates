@@ -2,7 +2,6 @@
 " Last Change:	2024-01-11
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
-
 function xdg_templates#get_templates_dir()
     " Let user override the dir we search templates in.
     " Useful for non-XDG operating systems.
@@ -19,7 +18,7 @@ function xdg_templates#get_templates_dir()
     return expand('~/Templates')
 endfunction
 
-function xdg_templates#find_template(filename)
+function s:find_template(filename)
     silent let l:template_dir = g:xdg_templates#get_templates_dir()
     for l:template in glob(l:template_dir .. '/*.*', 0, 1)
         if fnamemodify(l:template, ':e') == fnamemodify(a:filename, ':e')
@@ -29,13 +28,23 @@ function xdg_templates#find_template(filename)
     return ''
 endfunction
 
+function s:apply_offset(template)
+    silent let l:file = fnamemodify(a:template, ':t')
+    if exists('g:xdg_templates_file_offset')
+                \&& has_key(g:xdg_templates_file_offset, l:file)
+        execute g:xdg_templates_file_offset[l:file]
+    else
+        $
+    endif
+endfunction
+
 function xdg_templates#prefix_template(filename)
-    silent let l:template = g:xdg_templates#find_template(a:filename)
+    silent let l:template = <SID>find_template(a:filename)
     if ! empty(l:template)
         silent let l:was_empty = line('$') == 1
         silent execute '0read' l:template
         if l:was_empty
-            $
+            call <SID>apply_offset(l:template)
             setlocal nomodified
         endif
     endif
