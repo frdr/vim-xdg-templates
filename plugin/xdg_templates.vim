@@ -25,7 +25,9 @@ if exists('g:loaded_xdg_templates')
 endif
 let g:loaded_xdg_templates=1
 
-let g:xdg_templates_file_offset = {}
+if ! exists('g:xdg_templates_file_offset')
+    let g:xdg_templates_file_offset = {}
+endif
 
 if ! (exists('g:xdg_templates_no_autocmd') && g:xdg_templates_no_autocmd)
     augroup xdg_templates
