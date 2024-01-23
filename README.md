@@ -16,9 +16,10 @@ The lookup directory can be overridden by setting
 
     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
 
-Offsets for can be defined per template to allow e.g. for modelines:
+Commands to execute for all templates or individual files can be defined, e.g. to have offsets: 
 
-    let g:xdg_templates_file_offset['myheader.h'] = '$-2'
+    let g:xdg_templates_all_execute = '$-2'
+    let g:xdg_templates_file_execute = {'myheader.h': '$-2'}
 
 ## Missing features
 
