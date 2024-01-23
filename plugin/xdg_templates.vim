@@ -5,16 +5,7 @@
 " Any file within the XDG TEMPLATES directory is offered for quick file
 " creation in graphical file managers. This plugin makes Vim use the same
 " files whenever a new file with the respective extension is created.
-"
-" Note that this works purely on extension, not filetype. Consider
-" creating synonymous files through symlinks:
-"
-"     ln -s header_file.h header_file.hpp
-"
-" The lookup directory can be overridden by setting
-" `g:xdg_templates_lookup_dir`:
-"
-"     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
+
 if exists('g:loaded_xdg_templates')
     finish
 endif
