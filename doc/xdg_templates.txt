@@ -1,5 +1,5 @@
 *xdg_templates.txt* Use files from XDG TEMPLATES directory in Vim
-							 Version 1.0.0
+							 Version 1.1.0
 
 Any file within the XDG TEMPLATES directory is offered for quick file
 creation in graphical file managers. This plugin makes Vim use the same
