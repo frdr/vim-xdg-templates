@@ -20,10 +20,8 @@ endfunction
 
 function s:find_template(filename)
     silent let l:template_dir = g:xdg_templates#get_templates_dir()
-    for l:template in glob(l:template_dir .. '/*.*', 0, 1)
-        if fnamemodify(l:template, ':e') == fnamemodify(a:filename, ':e')
-            return l:template
-        endif
+    for l:template in glob(l:template_dir .. '/*.' .. fnamemodify(a:filename, ':e'), 0, 1, 1)
+        return l:template
     endfor
     return ''
 endfunction
