@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:	2024-01-11
+" Last Change:	2024-01-23
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
 function xdg_templates#get_templates_dir()
@@ -24,15 +24,17 @@ function s:find_template(filename)
         if fnamemodify(l:template, ':e') == fnamemodify(a:filename, ':e')
             return l:template
         endif
-    endfor 
+    endfor
     return ''
 endfunction
 
-function s:apply_offset(template)
+function s:apply_execute_hook(template)
     silent let l:file = fnamemodify(a:template, ':t')
-    if exists('g:xdg_templates_file_offset')
-                \&& has_key(g:xdg_templates_file_offset, l:file)
-        execute g:xdg_templates_file_offset[l:file]
+    if exists('g:xdg_templates_file_execute')
+                \&& has_key(g:xdg_templates_file_execute, l:file)
+        execute g:xdg_templates_file_execute[l:file]
+    elseif exists('g:xdg_templates_all_execute')
+        execute g:xdg_templates_all_execute
     else
         $
     endif
@@ -44,7 +46,7 @@ function xdg_templates#prefix_template(filename)
         silent let l:was_empty = line('$') == 1
         silent execute '0read' l:template
         if l:was_empty
-            call <SID>apply_offset(l:template)
+            call <SID>apply_execute_hook(l:template)
             setlocal nomodified
         endif
     endif
