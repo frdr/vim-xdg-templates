@@ -129,8 +129,8 @@ To prevent xdg_templates from creating any |command|, set the variable
 
 MISSING FEATURES
 
-* Alias for extensions.
 * Consider using 'filetype', not just extensions.
+* Best-match algorithm to have templates for e.g. letter.tex and paper.tex
 
 KNOWN BUGS
 
