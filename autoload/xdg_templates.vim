@@ -1,6 +1,15 @@
 " Use XDG templates for new files in Vim
-" Last Change:	2024-01-23
+" Last Change:	2024-01-24
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
+
+function xdg_templates#ext_alias_default()
+    return [
+        \ ['cpp', 'cxx', 'C', 'cc'],
+        \ ['hpp', 'hxx', 'hh', 'h'],
+        \ ['md', 'markdown'],
+        \ ['htm', 'html'],
+    \ ]
+endfunction
 
 function xdg_templates#get_templates_dir()
     " Let user override the dir we search templates in.
@@ -18,10 +27,30 @@ function xdg_templates#get_templates_dir()
     return expand('~/Templates')
 endfunction
 
+function s:find_alias(extension)
+    silent let l:result = [ a:extension ]
+    silent let l:ext_alias = exists('g:xdg_templates_ext_alias')
+                \ ? g:xdg_templates_ext_alias
+                \ : g:xdg_templates#ext_alias_default()
+    for l:peers in l:ext_alias
+        if index(l:peers, a:extension) >= 0
+            silent let l:result += l:peers
+            " Yeah, I know now a:extension is in l:result *twice*!
+            " File a bug if this bogs your Vim down.
+            " I still want the original extension be in the first place.
+        endif
+    endfor
+    return l:result
+endfunction
+
 function s:find_template(filename)
     silent let l:template_dir = g:xdg_templates#get_templates_dir()
-    for l:template in glob(l:template_dir .. '/*.' .. fnamemodify(a:filename, ':e'), 0, 1, 1)
-        return l:template
+    silent let l:to_glob = <SID>find_alias(fnamemodify(a:filename, ':e'))
+    echo l:to_glob
+    for l:ext in l:to_glob
+        for l:template in glob(l:template_dir .. '/*.' .. l:ext, 0, 1, 1)
+            return l:template
+        endfor
     endfor
     return ''
 endfunction

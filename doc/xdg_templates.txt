@@ -1,14 +1,11 @@
 *xdg_templates.txt* Use files from XDG TEMPLATES directory in Vim
-							 Version 1.1.0
+							 Version 1.2.0
 
 Any file within the XDG TEMPLATES directory is offered for quick file
 creation in graphical file managers. This plugin makes Vim use the same
 files whenever a new file with a matching extension is created.
 
-Note that this works purely on extension, not 'filetype'. Consider
-creating synonymous files through symlinks:
-
-	$ ln -s header_file.h header_file.hpp
+Note that this works purely on extensions, not 'filetype'.
 
 USAGE
 
@@ -25,16 +22,30 @@ and the template will be inserted at the start of the current buffer.
 
 FUNCTIONS
 
-
 					     *xdg_templates#prefix_template()*
 prefix_template({name})	Find a template for {name} and prefix it to the
 			current buffer.
+			To prefix an existing buffer, the
+			|PrefixXdgTemplate| command may be easier to use.
 
 					   *xdg_templates#get_templates_dir()*
 get_templates_dir()	Internal function to return the directory as a
 			string in which templates will be searched for. Can
 			be overridden by setting |g:xdg_templates_lookup_dir|.
 
+					   *xdg_templates#ext_alias_default()*
+ext_alias_default()	Internal function that returns a list of lists of
+			strings. All the strings literally stand for
+			extensions and those within a list are treated as
+			synonyms. This is used to use the same templates for
+			files of the same type that differ in extensions. See
+			|g:xdg_templates_ext_alias| for examples.
+
+			To see the defaults, |:echo| them >
+			    :echo xdg_templates#ext_alias_default()
+<
+			The defaults are only applied if
+			|g:xdg_templates_ext_alias| is not set.
 
 COMMANDS
 
@@ -82,6 +93,31 @@ command to any newly created buffer.
 
 If neither this variable or |g:xdg_templates_all_execute| are set, the
 default is to jump to the last line of the new buffer through |:$|.
+
+						   *g:xdg_templates_ext_alias*
+Some templates can be used for files with different, synonymous extensions. A
+file with any of these extensions would be created from the same template.
+This variable may contain a list of lists of strings denoting extensions that
+are to be treated interchangeably.
+
+For files containing C++ source code, the extensions cpp, cc, cxx, or C could
+be used.  For historical reasons, some file types are known by both a three
+letter and a four letter extension. An example would be htm and html.
+
+The two above examples would look like >
+    let g:xdg_templates_ext_alias = [
+	\ ['cpp', 'cc', 'cxx', 'C'],
+	\ ['htm', 'html']
+<
+To turn off this kind of aliasing completely, make it an empty list >
+    let g:xdg_templates_ext_alias = []
+<
+If g:xdg_templates_ext_alias is unset, defaults as returned by
+|xdg_templates#ext_alias_default()| are used. To tweak the defaults,
+initialize the variable from the function and change it  >
+    let g:xdg_templates_ext_alias = xdg_templates#ext_alias_default()
+    let g:xdg_templates_ext_alias += ['foo', 'bar']
+<
 
 						  *g:xdg_templates_no_autocmd*
 To prevent xdg_templates from creating any |autocmd|, set the variable
