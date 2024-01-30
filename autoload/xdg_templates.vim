@@ -14,7 +14,7 @@ endfunction
 function xdg_templates#get_templates_dir() abort
     " Let user override the dir we search templates in.
     " Useful for non-XDG operating systems.
-    if exists('g:xdg_templates_lookup_dir') && ! empty('g:xdg_templates_lookup_dir')
+    if exists('g:xdg_templates_lookup_dir') && ! empty(g:xdg_templates_lookup_dir)
         return g:xdg_templates_lookup_dir
     endif
 
