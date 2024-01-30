@@ -2,7 +2,7 @@
 " Last Change:	2024-01-24
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
-function xdg_templates#ext_alias_default()
+function xdg_templates#ext_alias_default() abort
     return [
         \ ['cpp', 'cxx', 'C', 'cc'],
         \ ['hpp', 'hxx', 'hh', 'h'],
@@ -11,7 +11,7 @@ function xdg_templates#ext_alias_default()
     \ ]
 endfunction
 
-function xdg_templates#get_templates_dir()
+function xdg_templates#get_templates_dir() abort
     " Let user override the dir we search templates in.
     " Useful for non-XDG operating systems.
     if exists('g:xdg_templates_lookup_dir') && ! empty('g:xdg_templates_lookup_dir')
@@ -27,7 +27,7 @@ function xdg_templates#get_templates_dir()
     return expand('~/Templates')
 endfunction
 
-function s:find_alias(extension)
+function s:find_alias(extension) abort
     silent let l:result = [ a:extension ]
     silent let l:ext_alias = exists('g:xdg_templates_ext_alias')
                 \ ? g:xdg_templates_ext_alias
@@ -43,7 +43,7 @@ function s:find_alias(extension)
     return l:result
 endfunction
 
-function s:find_template(filename)
+function s:find_template(filename) abort
     silent let l:template_dir = g:xdg_templates#get_templates_dir()
     silent let l:to_glob = <SID>find_alias(fnamemodify(a:filename, ':e'))
     echo l:to_glob
@@ -55,7 +55,7 @@ function s:find_template(filename)
     return ''
 endfunction
 
-function s:apply_execute_hook(template)
+function s:apply_execute_hook(template) abort
     silent let l:file = fnamemodify(a:template, ':t')
     if exists('g:xdg_templates_file_execute')
                 \&& has_key(g:xdg_templates_file_execute, l:file)
@@ -67,7 +67,7 @@ function s:apply_execute_hook(template)
     endif
 endfunction
 
-function xdg_templates#prefix_template(filename)
+function xdg_templates#prefix_template(filename) abort
     silent let l:template = <SID>find_template(a:filename)
     if ! empty(l:template)
         silent let l:was_empty = line('$') == 1
