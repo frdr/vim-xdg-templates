@@ -46,7 +46,6 @@ endfunction
 function s:find_template(filename) abort
     silent let l:template_dir = g:xdg_templates#get_templates_dir()
     silent let l:to_glob = <SID>find_alias(fnamemodify(a:filename, ':e'))
-    echo l:to_glob
     for l:ext in l:to_glob
         for l:template in glob(l:template_dir .. '/*.' .. l:ext, 0, 1, 1)
             return l:template
