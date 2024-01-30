@@ -43,14 +43,27 @@ function s:find_alias(extension) abort
     return l:result
 endfunction
 
+function s:best_match(haystack, needle) abort
+    if ! empty(a:haystack)
+        silent let l:matches = matchfuzzy(a:haystack, a:needle)
+        if ! empty(l:matches)
+            return l:matches[0]
+        endif
+        return a:haystack[0]
+    endif
+    return ''
+endfunction
+
 function s:find_template(filename) abort
     silent let l:template_dir = g:xdg_templates#get_templates_dir()
     silent let l:to_glob = <SID>find_alias(fnamemodify(a:filename, ':e'))
+    silent let l:matches = []
     for l:ext in l:to_glob
-        for l:template in glob(l:template_dir .. '/*.' .. l:ext, 0, 1, 1)
-            return l:template
-        endfor
+        silent let l:matches += glob(l:template_dir .. '/*.' .. l:ext, 0, 1, 1)
     endfor
+    if ! empty(l:matches)
+        return <SID>best_match(l:matches, a:filename)
+    endif
     return ''
 endfunction
 
