@@ -45,7 +45,10 @@ endfunction
 
 function s:best_match(haystack, needle) abort
     if ! empty(a:haystack)
-        silent let l:matches = matchfuzzy(a:haystack, a:needle)
+        silent let l:matches = matchfuzzy(
+                    \ a:haystack,
+                    \ a:needle,
+                    \ {'matchseq': 1, 'limit': 1})
         if ! empty(l:matches)
             return l:matches[0]
         endif
