@@ -18,13 +18,17 @@ function xdg_templates#get_templates_dir() abort
         return g:xdg_templates_lookup_dir
     endif
 
-    " Use whatever XDG uses
-    if executable('xdg-user-dir')
-        return trim(system('xdg-user-dir TEMPLATES'))
-    endif
+    " Only call xdg-user-dir once, shouldn't be so volatile
+    if ! exists('s:xdg_user_dir_cached')
+        " Use whatever XDG uses
+        if executable('xdg-user-dir')
+            let s:xdg_user_dir_cached=trim(system('xdg-user-dir TEMPLATES'))
+        endif
 
-    " Just take what's the default
-    return expand('~/Templates')
+        " Just take what's the default
+        let s:xdg_user_dir_cached=expand('~/Templates')
+    endif
+    return s:xdg_user_dir_cached
 endfunction
 
 function s:find_alias(extension) abort
