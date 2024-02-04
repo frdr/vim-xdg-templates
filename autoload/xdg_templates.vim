@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:	2024-01-24
+" Last Change:  2024-02-04
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
 function xdg_templates#ext_alias_default() abort

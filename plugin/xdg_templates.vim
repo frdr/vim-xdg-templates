@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:	2024-01-23
+" Last Change:  2024-02-04
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 "
 " Any file within the XDG TEMPLATES directory is offered for quick file
