@@ -19,5 +19,5 @@ if ! (exists('g:xdg_templates_no_autocmd') && g:xdg_templates_no_autocmd)
 endif
 
 if ! (exists('g:xdg_templates_no_command') && g:xdg_templates_no_command)
-    command PrefixXdgTemplate eval g:xdg_templates#prefix_template(expand('%'))
+    command XdgTemplatePrefix eval g:xdg_templates#prefix_template(expand('%'))
 endif

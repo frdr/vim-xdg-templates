@@ -17,7 +17,7 @@ The template files typically carry boilerplate code and boring stuff like
 copyright notice. It's what you'd like to have in your file anyway.
 
 This plugin also defines a |command| to use if you're editing an existing file
-and you forgot to prefix your usual header and stuff. Call |PrefixXdgTemplate|
+and you forgot to prefix your usual header and stuff. Call |XdgTemplatePrefix|
 and the template will be inserted at the start of the current buffer.
 
 FUNCTIONS
@@ -26,7 +26,7 @@ FUNCTIONS
 prefix_template({name})	Find a template for {name} and prefix it to the
 			current buffer.
 			To prefix an existing buffer, the
-			|PrefixXdgTemplate| command may be easier to use.
+			|XdgTemplatePrefix| command may be easier to use.
 
 					   *xdg_templates#get_templates_dir()*
 get_templates_dir()	Internal function to return the directory as a
@@ -49,8 +49,8 @@ ext_alias_default()	Internal function that returns a list of lists of
 
 COMMANDS
 
-							  *:PrefixXdgTemplate*
-PrefixXdgTemplate	Find a template for the current file and insert it at
+							  *:XdgTemplatePrefix*
+XdgTemplatePrefix	Find a template for the current file and insert it at
 			the top of the buffer.
 
 OPTIONS
