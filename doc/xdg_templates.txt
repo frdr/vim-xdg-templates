@@ -41,7 +41,8 @@ ext_alias_default()	Internal function that returns a list of lists of
 			files of the same type that differ in extensions. See
 			|g:xdg_templates_ext_alias| for examples.
 
-			To see the defaults, |:echo| them >
+			To see the defaults, |:echo| them 
+>
 			    :echo xdg_templates#ext_alias_default()
 <
 			The defaults are only applied if
@@ -58,16 +59,19 @@ OPTIONS
 						  *g:xdg_templates_lookup_dir*
 The lookup directory can be overridden by setting
 `g:xdg_templates_lookup_dir`. The variable's value is taken verbatim, if you
-want expansion to take place, you need to do it yourself: >
+want expansion to take place, you need to do it yourself: 
+>
     let g:xdg_templates_lookup_dir = expand('~/.vim/templates')
 <
 			    *g:xdg_templates_all_execute*
 Specifies an Ex command that is run with |:execute| right after any template has
 been inserted. This can be useful for specifying a constant offset. Assume all
-of your templates contain a |modeline| at their bottoms: >
+of your templates contain a |modeline| at their bottoms: 
+>
     let g:xdg_templates_all_execute = '$-2'
 <
-It can also be used for more complex tasks, like replacing snippets: >
+It can also be used for more complex tasks, like replacing snippets: 
+>
     let g:xdg_templates_all_execute = 's/<year>/2024/e|$'
 <
 Also see |g:xdg_templates_file_execute| which allows to execute commands on a
@@ -82,7 +86,8 @@ commands as values. This variable is useful if you want to control the initial
 position of the cursor in a newly created file or expand special markers.
 
 Assuming your C or C++ header file contains an old-school header include guard
-with "#endif" as its bottom line, you would set: >
+with "#endif" as its bottom line, you would set: 
+>
     let g:xdg_templates_file_execute = {'myheader.h': '$-2'}
 <
 This can also be useful if you have a |modeline| at the bottom of one of your
@@ -104,17 +109,20 @@ For files containing C++ source code, the extensions cpp, cc, cxx, or C could
 be used.  For historical reasons, some file types are known by both a three
 letter and a four letter extension. An example would be htm and html.
 
-The two above examples would look like >
+The two above examples would look like 
+>
     let g:xdg_templates_ext_alias = [
 	\ ['cpp', 'cc', 'cxx', 'C'],
 	\ ['htm', 'html']
 <
-To turn off this kind of aliasing completely, make it an empty list >
+To turn off this kind of aliasing completely, make it an empty list 
+>
     let g:xdg_templates_ext_alias = []
 <
 If g:xdg_templates_ext_alias is unset, defaults as returned by
 |xdg_templates#ext_alias_default()| are used. To tweak the defaults,
-initialize the variable from the function and change it  >
+initialize the variable from the function and change it  
+>
     let g:xdg_templates_ext_alias = xdg_templates#ext_alias_default()
     let g:xdg_templates_ext_alias += ['foo', 'bar']
 <
