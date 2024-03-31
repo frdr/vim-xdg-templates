@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:  2024-02-04
+" Last Change:  2024-03-31
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 
 function xdg_templates#ext_alias_default() abort
@@ -14,7 +14,7 @@ endfunction
 function xdg_templates#get_templates_dir() abort
     " Let user override the dir we search templates in.
     " Useful for non-XDG operating systems.
-    if exists('g:xdg_templates_lookup_dir') && ! empty(g:xdg_templates_lookup_dir)
+    if get(g:, 'xdg_templates_lookup_dir', 0)
         return g:xdg_templates_lookup_dir
     endif
 

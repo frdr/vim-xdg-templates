@@ -1,5 +1,5 @@
 " Use XDG templates for new files in Vim
-" Last Change:  2024-02-04
+" Last Change:  2024-03-31
 " Maintainer:	Friedrich Kischkel <friedrich.kischkel@gmail.com>
 "
 " Any file within the XDG TEMPLATES directory is offered for quick file
@@ -11,13 +11,13 @@ if exists('g:loaded_xdg_templates')
 endif
 let g:loaded_xdg_templates=1
 
-if ! (exists('g:xdg_templates_no_autocmd') && g:xdg_templates_no_autocmd)
+if get(g:, 'xdg_templates_do_autocmd', 1)
     augroup xdg_templates
         autocmd!
         autocmd BufNewFile * eval g:xdg_templates#prefix_template(expand('<afile>'))
     augroup END
 endif
 
-if ! (exists('g:xdg_templates_no_command') && g:xdg_templates_no_command)
+if get(g:, 'xdg_templates_do_command', 1)
     command XdgTemplatePrefix eval g:xdg_templates#prefix_template(expand('%'))
 endif

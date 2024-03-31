@@ -127,13 +127,13 @@ initialize the variable from the function and change it
     let g:xdg_templates_ext_alias += ['foo', 'bar']
 <
 
-						  *g:xdg_templates_no_autocmd*
+						  *g:xdg_templates_do_autocmd*
 To prevent xdg_templates from creating any |autocmd|, set the variable
-`g:xdg_templates_no_autocmd`.
+`g:xdg_templates_do_autocmd` to a |falsy| value.
 
-						  *g:xdg_templates_no_command*
+						  *g:xdg_templates_do_command*
 To prevent xdg_templates from creating any |command|, set the variable
-`g:xdg_templates_no_command`.
+`g:xdg_templates_do_command` to a |falsy| value..
 
 MISSING FEATURES
 
